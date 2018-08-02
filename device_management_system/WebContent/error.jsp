@@ -3,11 +3,9 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>登録/変更</title>
+        <title>エラー</title>
     </head>
     <body>
-     <label for = "new">新規端末登録</label>
-    <input type = "text" id = "new" name = "news">
-    <input type = "submit" value = "登録" >
+        <h1>error!</h1>
     </body>
 </html>
