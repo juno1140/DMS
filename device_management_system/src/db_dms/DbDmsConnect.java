@@ -2,17 +2,21 @@ package db_dms;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DbDmsConnect {
 
-    public static void main() {
+    public static void main(String device_name) {
         // データベース接続と結果取得のための変数
         Connection con = null;
         Statement stmt = null;
+        PreparedStatement ps = null;
         ResultSet rs = null;
+
+        String sql = "insert into dms.device (device_name) values (?)";
 
         try {
             // 1. ドライバのクラスをJava上で読み込む
@@ -29,7 +33,10 @@ public class DbDmsConnect {
             stmt = con.createStatement();
 
             // 4, 5. Select文の実行と結果を格納／代入
-            int num = stmt.executeUpdate("insert into dms.device (device_name) values ('Xperia')");
+            ps = con.prepareStatement(sql);
+            ps.setString(1, device_name);
+
+            int num = ps.executeUpdate();
 
             // 6. 結果を表示する
            // while (rs.next()) {

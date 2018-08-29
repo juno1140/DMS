@@ -17,9 +17,9 @@ public class SetDeviceNameServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    DbDmsConnect dms = new DbDmsConnect();
-	    dms.main();
 	    String device_name = request.getParameter("device_name");
+	    DbDmsConnect dms = new DbDmsConnect();
+	    dms.main(device_name);
 	        RequestDispatcher dispatch = request.getRequestDispatcher("/setResult.jsp");
 	        dispatch.forward(request, response);
 	    }
